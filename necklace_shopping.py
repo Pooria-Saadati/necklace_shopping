@@ -5,11 +5,19 @@ for i in range (0,t):
     
     if len(a) == len(b):
         for j in range(0,len(a)):
-            
-            if b.find(a[j]) < 0 :
+            try:
+                Index = b.index(a[j])
+            except:
+                Index = -2
+            IsExist=0
+            if Index < 0 :
                 x.append("NO")
+                IsExist = 1
                 break
-        else : x.append("YES")
+            else:
+                b = b[:Index] + b[Index + 1:]
+        if IsExist==0:
+            x.append("YES")
     else : x.append("NO")    
     
     
